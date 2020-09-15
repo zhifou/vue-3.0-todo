@@ -6,6 +6,8 @@ import store from './store/index'
 
 const app = createApp(App);
 // 通过use 将 路由插件安装到 app 中
+let isAuthenticated = true;
+router.beforeEach(() => isAuthenticated);
 app.use(router);
 app.use(store);
 app.mount('#app');
