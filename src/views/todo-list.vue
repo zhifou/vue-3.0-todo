@@ -1,8 +1,11 @@
 <template>
     <div class="todo-list">
         <div>
-            <label>新增待办</label>
+            <label>新增待办{{userName}}</label>
             <input v-model="state.todo" @keyup.enter="handleAddTodo">
+            <ul>
+                <li v-for="item in list" :key="item">{{item}}</li>
+            </ul>
         </div>
         <div class="todo-wait">
             <h3>待办列表({{todos.length}})</h3>
@@ -27,12 +30,21 @@
 
 <script lang="ts">
 // 在vue2中 data 在vue3中使用 reactive代替
-import { reactive, computed } from 'vue';
+import { reactive, computed, ComputedRef, onMounted, onUpdated, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore, dispatch } from 'vuex';
 
 export default {
     // setup相当于vue2.0的 beforeCreate和 created，是vue3新增的一个属性，所有的操作都在此属性中完成
     setup(props, context) {
+
+        // 测试vuex
+        const store: any = useStore();
+        // const userName = computed(() => store.state.detail.userName);
+        const list = computed(() => store.state.list.list);
+        // const userName = computed(() => store.getters.userName);
+        const userName = computed(() => store.getters['detail/userName']);
+
         // 通过reactive 可以初始化一个可响应的数据，与Vue2.0中的Vue.observer很相似
         const state = reactive({
             todoList: [{
@@ -50,6 +62,17 @@ export default {
             }],
             todo: ''
         });
+
+        onMounted(() => {
+            console.log('mounted!');
+            console.log(store, store.getters);
+        })
+        onUpdated(() => {
+            console.log('updated!')
+        })
+        onUnmounted(() => {
+            console.log('unmounted!')
+        })
 
         // 使用计算属性生成待办列表
         const todos = computed(() => {
@@ -77,7 +100,16 @@ export default {
                 id: Date.now(),
                 done: false
             });
+            // console.log(store.getters.userName, store);
+            console.log(store._modules.root._children.list);
+            // 直接调用Mutations
+            // store.commit('updateName', state.todo);
+            // 直接调用Actions
+            // store._modules.root._children.detail.context.dispatch('updateName', state.todo);
+            store.dispatch('detail/updateName', state.todo);
+            store._modules.root._children.list.context.dispatch('updateList', [Math.random(), Math.random()]);
             state.todo = '';
+            
         }
 
         // 在Vue3.0中，所有的数据和方法都通过在setup 中 return 出去，然后在template中使用
@@ -86,7 +118,9 @@ export default {
             todos,
             dones,
             handleChangeStatus,
-            handleAddTodo
+            handleAddTodo,
+            userName,
+            list
         }
     }
 }
