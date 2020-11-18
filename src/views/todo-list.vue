@@ -31,8 +31,7 @@
 <script lang="ts">
 // 在vue2中 data 在vue3中使用 reactive代替
 import { reactive, computed, ComputedRef, onMounted, onUpdated, onUnmounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore, dispatch } from 'vuex';
+import { useStore } from 'vuex';
 
 export default {
     // setup相当于vue2.0的 beforeCreate和 created，是vue3新增的一个属性，所有的操作都在此属性中完成
