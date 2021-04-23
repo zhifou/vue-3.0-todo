@@ -1,16 +1,26 @@
 <template>
-    <HelloWorld msg="Hello Vue 3.0 + Vite" />
-    <div><a href="#/todo">待办事宜</a></div>
-    <div><a href="#/swr">SWR测试</a></div>
+    <NavBar @count="state.count" @active="state.active"/>
 </template>
 
 <script lang="ts">
-import HelloWorld from "../components/HelloWorld.vue";
+import NavBar from '../components/navbar.vue';
+import { reactive } from 'vue';
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    NavBar
   },
+  setup(props, context) {
+    const state = reactive({
+      count: 5,
+      active: 'swr'
+    });
+
+    console.log(state);
+    return {
+      state
+    }
+  }
 };
 </script>
