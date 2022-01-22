@@ -12,10 +12,12 @@
     </div>
   </div>
 </template>
+
 <script>
 import Libraries from "../components/libraries.vue";
 import Library from "../components/library.vue";
 import { ref } from "vue";
+
 export default {
   components: {
     Library,
@@ -27,6 +29,7 @@ export default {
   },
 };
 </script>
+
 <style >
 * {
   margin: 0;
