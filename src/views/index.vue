@@ -17,7 +17,6 @@ export default {
       active: 'swr'
     });
 
-    console.log(state);
     return {
       state
     }

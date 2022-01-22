@@ -4,17 +4,17 @@ specifiers:
   '@vitejs/plugin-vue': ^2.1.0
   '@vue/compiler-sfc': ^3.2.28
   axios: ^0.21.1
+  pinia: ^2.0.9
   typescript: ^4.5.5
   vite: ^2.7.13
   vue: ^3.2.28
   vue-router: ^4.0.12
-  vuex: ^4.0.2
 
 dependencies:
   axios: 0.21.4
+  pinia: 2.0.9_typescript@4.5.5+vue@3.2.28
   vue: 3.2.28
   vue-router: 4.0.12_vue@3.2.28
-  vuex: 4.0.2_vue@3.2.28
 
 devDependencies:
   '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.28
@@ -348,6 +348,24 @@ packages:
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
+  /pinia/2.0.9_typescript@4.5.5+vue@3.2.28:
+    resolution: {integrity: sha512-iuYdxLJKQ07YPyOHYH05wNG9eKWqkP/4y4GE8+RqEYtz5fwHgPA5kr6zQbg/DoEJGnR2XCm1w1vdt6ppzL9ATg==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.0.0-beta.21.1
+      typescript: 4.5.5
+      vue: 3.2.28
+      vue-demi: 0.12.1_vue@3.2.28
+    dev: false
+
   /postcss/8.4.5:
     resolution: {integrity: sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -419,6 +437,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /vue-demi/0.12.1_vue@3.2.28:
+    resolution: {integrity: sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.28
+    dev: false
+
   /vue-router/4.0.12_vue@3.2.28:
     resolution: {integrity: sha512-CPXvfqe+mZLB1kBWssssTiWg4EQERyqJZes7USiqfW9B5N2x+nHlnsM1D3b5CaJ6qgCvMmYJnz+G0iWjNCvXrg==}
     peerDependencies:
@@ -436,13 +469,4 @@ packages:
       '@vue/runtime-dom': 3.2.28
       '@vue/server-renderer': 3.2.28_vue@3.2.28
       '@vue/shared': 3.2.28
-    dev: false
-
-  /vuex/4.0.2_vue@3.2.28:
-    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
-    peerDependencies:
-      vue: ^3.0.2
-    dependencies:
-      '@vue/devtools-api': 6.0.0-beta.21.1
-      vue: 3.2.28
     dev: false
